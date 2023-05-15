@@ -1,4 +1,4 @@
-use std::io;
+use std::{io, println};
 use libm;
 
 // ipad pro 10.5 2224*1668 10.5 264ppi
@@ -32,9 +32,6 @@ fn main() {
         std::mem::swap(&mut width, &mut height);
     }
 
-    println!("width: {}; height: {}", width, height);
-    println!("height/width: {}", width/height);
-    println!("--------------------------------------------------");
     println!("Now, please input your screen size in inches:");
     println!("for example: 27");
 
@@ -46,10 +43,12 @@ fn main() {
         .expect("Didn't Receive Input");
     let r:f32 = size.trim().parse()
         .expect("size wasn't assigned a number");
-    println!("Your screen size is {}", r);
     println!("--------------------------------------------------");
     let result_w = get_width(w, h, r);
     println!("Your device infos:",);
+    println!("width: {}; height: {}", width, height);
+    println!("height/width: {}", w/h);
+    println!("Your screen size is {}", r);
     println!("width is {} inches, which is {}cm", 
         result_w, inch_to_cm(result_w));
     let result_h: f32 = result_w / w * h;
