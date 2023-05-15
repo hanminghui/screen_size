@@ -1,6 +1,10 @@
 use std::io;
 use libm;
 
+// ipad pro 10.5 2224*1668 10.5 264ppi
+// MacbookPro 14 2021/2023 3024*1964 14.2 254ppi
+// MacbookPro 16 2021/2023 3456*2234 16.2 254ppi
+
 fn main() {
     println!("==================================================");
     println!("Screen Size");
@@ -50,6 +54,7 @@ fn main() {
     let result_h: f32 = result_w / w * h;
     println!("height is {} inches, which is {}cm", 
         result_h, inch_to_cm(result_h));
+    println!("and at a pixel density of {}ppi.", get_ppi(w, h, r));
 }
 
 fn get_width(w: f32, h: f32, r: f32) -> f32{ 
@@ -58,6 +63,13 @@ fn get_width(w: f32, h: f32, r: f32) -> f32{
 
 fn inch_to_cm(inch: f32) -> f32{
     return 2.54 * inch
+}
+
+fn get_ppi(w: f32, h: f32, r: f32) -> f32{
+    //number of pixels in the diagonal of the device
+    let d: f32 = libm::sqrtf(libm::powf(w, 2.0) + libm::powf(h, 2.0));
+    //PPI = divide the number of pixels by the physical (diagonal) size of the screen in inches
+    return d / r
 }
 
 // fn aspect_ratio(width: u32, height: u32){
