@@ -7,11 +7,10 @@ use libm;
 // MacbookAir m2 2022 2560*1664 13.6 224ppi
 
 fn main() {
-    println!("==================================================");
-    println!("Screen Size");
-    println!("--------------------------------------------------");
-    println!("Please input your screen resolution:");
-    println!("for example: 1920*1080");
+    println!("================================================================================");
+    println!("                                  Screen Size");
+    println!("--------------------------------------------------------------------------------");
+    println!("Please input your screen resolution: (for example: 1920*1080)");
     
     let mut resolution = String::new();
     io::stdin().read_line(&mut resolution)
@@ -32,8 +31,7 @@ fn main() {
         std::mem::swap(&mut width, &mut height);
     }
 
-    println!("Now, please input your screen size in inches:");
-    println!("for example: 27");
+    println!("Now, please input your screen size in inches: (for example: 27)");
 
     let w: f32 = width as f32;
     let h: f32 = height as f32;
@@ -43,18 +41,16 @@ fn main() {
         .expect("Didn't Receive Input");
     let r:f32 = size.trim().parse()
         .expect("size wasn't assigned a number");
-    println!("--------------------------------------------------");
+    println!("--------------------------------------------------------------------------------");
+    println!("Your device is {} inches of resolution {} * {} px", r, width, height);
+    println!("and at a pixel density of {:.2}ppi.", get_ppi(w, h, r));
+    //println!("height/width: {}", w/h);
     let result_w = get_width(w, h, r);
-    println!("Your device infos:",);
-    println!("width: {}; height: {}", width, height);
-    println!("height/width: {}", w/h);
-    println!("Your screen size is {}", r);
-    println!("width is {} inches, which is {}cm", 
-        result_w, inch_to_cm(result_w));
     let result_h: f32 = result_w / w * h;
-    println!("height is {} inches, which is {}cm", 
-        result_h, inch_to_cm(result_h));
-    println!("and at a pixel density of {}ppi.", get_ppi(w, h, r));
+    println!("and size is {:.2} * {:.2} inches, {:.2} * {:.2} cm", 
+        result_w, result_h,
+        inch_to_cm(result_w), inch_to_cm(result_h));
+    println!("================================================================================");
 }
 
 fn get_width(w: f32, h: f32, r: f32) -> f32{ 
