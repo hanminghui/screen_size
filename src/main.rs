@@ -6,6 +6,7 @@ use libm;
 // MacbookPro 16 2021/2023 3456*2234 16.2 254ppi
 // MacbookAir m2 2022 2560*1664 13.6 224ppi
 // ThinkPad x390 1920*1080 13.3 166ppi
+// ThinkPad e40 1366*768 14.0 112ppi
 
 fn main() {
     println!("================================================================================");
@@ -48,9 +49,9 @@ fn main() {
     //println!("height/width: {}", w/h);
     let result_w = get_width(w, h, r);
     let result_h: f32 = result_w / w * h;
-    println!("and size is {:.2} * {:.2} inches, {:.2} * {:.2} cm", 
-        result_w, result_h,
-        inch_to_cm(result_w), inch_to_cm(result_h));
+    println!("and size is {:.2} * {:.2} cm, area is {:.2} cm²", 
+        inch_to_cm(result_w), inch_to_cm(result_h), 
+        get_area(inch_to_cm(result_w), inch_to_cm(result_h)));
     println!("================================================================================");
 }
 
@@ -67,6 +68,10 @@ fn get_ppi(w: f32, h: f32, r: f32) -> f32{
     let d: f32 = libm::sqrtf(libm::powf(w, 2.0) + libm::powf(h, 2.0));
     //PPI = divide the number of pixels by the physical (diagonal) size of the screen in inches
     return d / r
+}
+
+fn get_area(w: f32, h: f32) -> f32{
+    return w * h
 }
 
 // fn aspect_ratio(width: u32, height: u32){
