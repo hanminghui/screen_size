@@ -44,8 +44,8 @@ fn main() {
     let r:f32 = size.trim().parse()
         .expect("size wasn't assigned a number");
     println!("--------------------------------------------------------------------------------");
-    println!("Your device is {} inches of resolution {} * {} px", r, width, height);
-    println!("and at a pixel density of {:.2}ppi.", get_ppi(w, h, r));
+    println!("Your device is {} inches of resolution {} * {} px (of {:.2}ppi)", 
+        r, width, height, get_ppi(w, h, r));
     //println!("height/width: {}", w/h);
     let result_w = get_width(w, h, r);
     let result_h: f32 = result_w / w * h;
