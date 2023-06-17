@@ -4,9 +4,11 @@ use libm;
 // ipad pro 10.5 2224*1668 10.5 264ppi
 // MacbookPro 14 2021/2023 3024*1964 14.2 254ppi
 // MacbookPro 16 2021/2023 3456*2234 16.2 254ppi
-// MacbookAir m2 2022 2560*1664 13.6 224ppi
+// MacbookAir 13 m2 2022 2560*1664 13.6 224.5ppi
+// MacbookAir 15 m2 2022 2880*1864 15.2 225.7ppi
 // ThinkPad x390 1920*1080 13.3 166ppi
 // ThinkPad e40 1366*768 14.0 112ppi
+// Hornor magicbook 14 2160*1440 14.0 185ppi
 
 fn main() {
     println!("================================================================================");
